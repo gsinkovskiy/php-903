@@ -2,20 +2,29 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Калькулятор</title>
+	<title>Регистрация</title>
 </head>
 <body>
+	<?php if ($message): ?>
+		<p><?= $message ?></p>
+	<?php endif ?>
+
+	<h1>Регистрация</h1>
 	<form method="post" action="form.php">
-		<input name="operand1" value="<?= $operand1 ?>">
-		<select name="operator">
-			<option value="+" <?php if ($operator == '+'): ?>selected<?php endif ?> >+</option>
-			<option value="-" <?php if ($operator == '-'): ?>selected<?php endif ?> >-</option>
-			<option value="*" <?php if ($operator == '*'): ?>selected<?php endif ?> >*</option>
-			<option value="/" <?php if ($operator == '/'): ?>selected<?php endif ?> >/</option>
-		</select>
-		<input name="operand2" value="<?= $operand2 ?>">
-		<button type="submit">=</button>
-		<?= $result ?>
+		<label for="first_name">Имя</label>
+		<input type="text" id="first_name" name="first_name">
+		<br>
+		<label for="last_name">Фамилия</label>
+		<input type="text" id="last_name" name="last_name">
+		<br>
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email">
+		<br>
+		<label for="password">Пароль</label>
+		<input type="password" id="password" name="password">
+		<br>
+
+		<button type="submit">Зарегистрироваться</button>
 	</form>
 </body>
 </html>
