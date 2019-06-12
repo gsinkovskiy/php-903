@@ -3,6 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Регистрация</title>
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	<?php if ($message): ?>

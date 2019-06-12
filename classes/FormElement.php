@@ -13,10 +13,26 @@ abstract class FormElement
      */
     private $label;
 
-    public function __construct(string $name, string $label)
+    /**
+     * @var string
+     */
+    protected $value;
+
+    /**
+     * @var bool
+     */
+    protected $required = false;
+
+    /**
+     * @var string
+     */
+    protected $error = '';
+
+    public function __construct(string $name, string $label, bool $required = false)
     {
         $this->name = $name;
         $this->label = $label;
+        $this->required = $required;
     }
 
     public function getName(): string
@@ -27,6 +43,25 @@ abstract class FormElement
     public function getLabel(): string
     {
         return $this->label;
+    }
+
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+
+        if (empty($value) && $this->required) {
+            $this->error = 'Поле не должно быть пустым';
+        }
+    }
+
+    public function getError(): string
+    {
+        return $this->error;
     }
 
     abstract public function render(): string;
